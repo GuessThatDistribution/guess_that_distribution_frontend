@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+click = "==8.1.3"
+colorama = "==0.4.5"
+flask = "==2.1.2"
+itsdangerous = "==2.1.2"
+jinja2 = "==3.1.2"
+markupsafe = "==2.1.1"
+numpy = "==1.22.4"
+plotly = "==5.8.2"
+scipy = "==1.8.1"
+tenacity = "==8.0.1"
+werkzeug = "==2.1.2"
+redis = "*"
+flask-session = "*"
+
+[dev-packages]
+autopep8 = "*"
+
+[requires]
+python_version = "3.10"

@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block title %}Play{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <h1>Play</h1>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div id="plot-spot" class="col-md-8">
+        <!-- plot gets rendered here -->
+        {{ distribution|safe }}
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form onsubmit="check_answer()" class="form-inline text-center w-100">
+            <!-- answer_options -->
+            {% for option in answer_options %}
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="selected_option" id="{{ option }}" value="{{ option }}">
+                    <label class="form-check-label" for="{{ option }}">
+                        {{ option }}
+                    </label>
+                </div>
+            {% endfor %}
+            <button type="button" onclick="check_answer()" class="btn btn-primary">Check Answer</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    // make ajax request to api/check_answer
+    function check_answer() {
+        var selected_option = $('input[name=selected_option]:checked').val();
+        var data = {
+            'selected_option': selected_option,
+        };
+        console.log(data)
+        $.ajax({
+            type: 'POST',
+            url: '/api/check_answer',
+            data: data,
+            dataType: "text",
+            success: function(data) {
+                console.log(data);
+            }
+        });
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,5 @@
+docker build -t 342755627552.dkr.ecr.us-east-1.amazonaws.com/guess_that_distribution:latest .
+docker push 342755627552.dkr.ecr.us-east-1.amazonaws.com/guess_that_distribution:latest
+
+docker build -t guess_that_distribution:latest .
+docker run -dp 5000:5000 guess_that_distribution:latest
